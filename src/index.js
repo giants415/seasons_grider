@@ -9,7 +9,7 @@ const App = () => {
     (err) => console.log(err)
   );
 
-  return <div>Hi There!</div>;
+  return <div>Latitude: </div>;
 };
 
 ReactDOM.render(
