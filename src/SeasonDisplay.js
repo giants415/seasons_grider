@@ -1,5 +1,16 @@
 import React from 'react';
 
+const seasonConfig = {
+  summer: {
+    displayText: 'Let\'s hit the beach',
+    iconName: 'sun'
+  },
+  winter: {
+    displayText: 'Brrr it\'s cold!',
+    iconName: 'snowflake'
+  }
+};
+
 const getSeason = (lat, month) => {
   if (month > 2 && month < 9) {
     // terenary expression
@@ -7,18 +18,18 @@ const getSeason = (lat, month) => {
   } else {
     return lat > 0 ? 'winter' : 'summer';
   }
-}
+};
 
 const SeasonDisplay = (props) => {
   const season = getSeason(props.lat, new Date().getMonth());
-  const displayText = season === 'winter' ? 'Burr, it is chilly' : 'Lets hit the beach!';
-  const icon = season === 'winter' ? 'snowflake' : 'sun';
+  // removes ternary expressions
+  const {displayText, iconName} = seasonConfig[season];
 
   return (
     <div>
-      <i className={`${icon} icon`}></i>
+      <i className={`${iconName} icon`}></i>
       <h1>{displayText}</h1>
-      <i className={`${icon} icon`}></i>
+      <i className={`${iconName} icon`}></i>
     </div>
   );
 };
