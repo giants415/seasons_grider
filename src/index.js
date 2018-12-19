@@ -9,16 +9,14 @@ class App extends React.Component {
       lat: null,
       errorMessage: ''
     };
+  }
 
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       // success callback
-      position => {
-        this.setState({ lat: position.coords.latitude });
-      },
+      position => this.setState({ lat: position.coords.latitude }),
       // failure callback
-      err => {
-        this.setState({ errorMessage: err.message });
-      }
+      err => this.setState({ errorMessage: err.message })
     );
   }
 
